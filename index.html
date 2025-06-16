@@ -1,13 +1,45 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>订阅服务购买</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    h1 { color: #333; }
+    .plan { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; }
+    .price { font-size: 20px; color: #e91e63; }
+    img { max-width: 200px; margin-top: 10px; }
+    input, button { padding: 8px; margin-top: 10px; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>订阅服务选择</h1>
+
+  <div class="plan">
+    <h3>100GB 流量套餐</h3>
+    <p class="price">￥15 元/月</p>
+    <p>支持 ChatGPT、视频串流、Reality 协议</p>
+    <button onclick="showLink('https://app.mitce.net/?sid=282929&token=srvaukjm')">我已付款，获取订阅</button>
+  </div>
+
+  <div class="plan">
+    <h3>无限流量套餐</h3>
+    <p class="price">￥40 元/月</p>
+    <p>适合重度使用者，无限流量/高并发</p>
+    <button onclick="showLink('https://app.mitce.net/?sid=282891&token=srvswyqm')">我已付款，获取订阅</button>
+  </div>
+
+  <h3>微信扫码付款：</h3>
+  <img src="收款码.png" alt="请用微信扫码付款" />
+
+  <h3>订阅链接：</h3>
+  <input type="text" id="link" readonly />
+
+  <script>
+    function showLink(url) {
+      document.getElementById("link").value = url;
+    }
+  </script>
+</body>
 </html>
