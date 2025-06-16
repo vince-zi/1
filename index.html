@@ -1,45 +1,41 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>订阅服务购买</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; }
-    h1 { color: #333; }
-    .plan { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; }
-    .price { font-size: 20px; color: #e91e63; }
-    img { max-width: 200px; margin-top: 10px; }
-    input, button { padding: 8px; margin-top: 10px; width: 100%; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订阅套餐选择</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            width: 80%;
+            max-width: 400px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-  <h1>订阅服务选择</h1>
-
-  <div class="plan">
-    <h3>100GB 流量套餐</h3>
-    <p class="price">￥15 元/月</p>
-    <p>支持 ChatGPT、视频串流、Reality 协议</p>
-    <button onclick="showLink('请添加微信Lonelier_zi')">我已付款，获取订阅</button>
-  </div>
-
-  <div class="plan">
-    <h3>无限流量套餐</h3>
-    <p class="price">￥40 元/月</p>
-    <p>支持 ChatGPT、视频串流、Reality 协议</p>
-    <button onclick="showLink('请添加微信Lonelier_zi')">我已付款，获取订阅</button>
-  </div>
-
-  <h3>微信扫码付款：</h3>
-  <img src="收款码.png" alt="请用微信扫码付款" />
-
-  <h3>订阅链接：</h3>
-  <input type="text" id="link" readonly />
-
-  <script>
-    function showLink(url) {
-      document.getElementById("link").value = url;
-    }
-  </script>
+    <h1>请选择订阅套餐</h1>
+    <a href="https://apps.apple.com/us/app/spectre-vpn/id1508712998" class="button">轻量套餐（15元 / 100G/月）</a>
+    <a href="https://app.mitce.net/?sid=282723&token=srvmjehm" class="button">无限套餐（40元 / 不限流量）</a>
+    <a href="#" class="button" style="background-color:gray;" onclick="alert('该套餐尚未开放')">尊享套餐（30元 / 500G/月）</a>
 </body>
 </html>
