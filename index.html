@@ -1,41 +1,96 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>订阅套餐选择</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        .button {
-            display: block;
-            margin: 20px auto;
-            padding: 15px 30px;
-            font-size: 18px;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            width: 80%;
-            max-width: 400px;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>订阅套餐付款页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+      padding: 30px;
+      color: #333;
+    }
+    h1 {
+      color: #4CAF50;
+    }
+    .plan {
+      background: white;
+      border-radius: 8px;
+      margin: 20px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .plan h2 {
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .qr {
+      margin-top: 15px;
+      display: none;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-    <h1>请选择订阅套餐</h1>
-    <a href="https://apps.apple.com/us/app/spectre-vpn/id1508712998" class="button">轻量套餐（15元 / 100G/月）</a>
-    <a href="https://app.mitce.net/?sid=282723&token=srvmjehm" class="button">无限套餐（40元 / 不限流量）</a>
-    <a href="#" class="button" style="background-color:gray;" onclick="alert('该套餐尚未开放')">尊享套餐（30元 / 500G/月）</a>
+
+<h1>选择你的订阅套餐</h1>
+
+<div class="plan">
+  <h2>📦 轻量套餐（15元/月）</h2>
+  <p>每月100G流量</p>
+  <button class="btn" onclick="showQR('light')">点击付款</button>
+  <div id="qr-light" class="qr">
+    <img src="light.png" width="220" alt="收款码">
+  </div>
+</div>
+
+<div class="plan">
+  <h2>👑 尊享套餐（30元/月）</h2>
+  <p>每月500G流量</p>
+  <button class="btn" onclick="showQR('premium')">点击付款</button>
+  <div id="qr-premium" class="qr">
+    <img src="premium.png" width="220" alt="收款码">
+  </div>
+</div>
+
+<div class="plan">
+  <h2>🚀 无限套餐（40元/月）</h2>
+  <p>不限流量</p>
+  <button class="btn" onclick="showQR('unlimited')">点击付款</button>
+  <div id="qr-unlimited" class="qr">
+    <img src="unlimited.png" width="220" alt="收款码">
+  </div>
+</div>
+
+<div class="footer">
+  <p>付款完成后，请添加客服索取订阅 <strong>Lonelier_zi</strong> 发送付款截图获取订阅。</p>
+  <p>如页面在微信中无法打开，请复制链接到浏览器中访问。</p>
+</div>
+
+<script>
+  function showQR(type) {
+    document.querySelectorAll('.qr').forEach(qr => qr.style.display = 'none');
+    document.getElementById(`qr-${type}`).style.display = 'block';
+  }
+</script>
+
 </body>
 </html>
