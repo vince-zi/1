@@ -1,111 +1,92 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>订阅选择页面</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>订阅套餐付款页</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f8f8;
-      padding: 20px;
-      text-align: center;
+    body{font-family:"Segoe UI",sans-serif;background:#f7f7f7;margin:0;padding:20px;text-align:center}
+    h2{color:#333;margin:15px 0}
+    .card{
+      background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+      padding:20px;margin:15px auto;max-width:420px;text-align:left
     }
-
-    h2 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    .plan {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      margin: 15px auto;
-      padding: 20px;
-      max-width: 500px;
-      text-align: left;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .plan h3 {
-      margin: 0;
-      color: #3CB371;
-    }
-
-    .plan p {
-      margin: 6px 0;
-      line-height: 1.6;
-      color: #555;
-    }
-
-    .pay-btn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      background-color: #3CB371;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .tip-box {
-      display: none;
-      margin: 40px auto;
-      padding: 20px;
-      max-width: 90%;
-      background-color: #fff8dc;
-      border-left: 6px solid #f90;
-      border-radius: 8px;
-      color: #444;
-      font-size: 16px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-
-    .highlight {
-      color: #d9534f;
-      font-weight: bold;
-      font-size: 18px;
-    }
+    .card h3{margin:0 0 8px;color:#3CB371}
+    .card p{margin:4px 0;color:#555}
+    .btn{display:inline-block;margin-top:14px;padding:10px 22px;background:#3CB371;
+         color:#fff;border:none;border-radius:5px;font-size:15px;cursor:pointer}
+    .qr-block{display:none;text-align:center;margin-top:15px}
+    .qr-block img{width:210px;border:1px solid #eee;border-radius:6px}
+    .paid-btn{margin-top:10px;background:#ff9800}
+    #tipBox{display:none;background:#fff8dc;border-left:6px solid #f90;
+            border-radius:8px;padding:18px;margin:30px auto;max-width:420px;color:#444}
+    .highlight{color:#d9534f;font-weight:700;font-size:18px}
   </style>
 </head>
 <body>
 
-  <h2>选择你需要的订阅套餐</h2>
+  <h2>选择适合你的套餐并付款</h2>
 
-  <div class="plan">
-    <h3>💡 轻量套餐 - ¥15</h3>
-    <p>流量：100G/月</p>
-    <p>速度：1000Mbps 动态</p>
+  <!-- 轻量套餐 -->
+  <div class="card">
+    <h3>💡 轻量套餐 – ¥15</h3>
+    <p>流量：100 G / 月</p>
     <p>设备：最多 5 台</p>
+    <button class="btn" onclick="showQR('light')">点击付款</button>
+
+    <div id="qr-light" class="qr-block">
+      <p>扫码付款：</p>
+      <img src="light.png" alt="轻量付款码">
+      <button class="btn paid-btn" onclick="showTip()">我已付款</button>
+    </div>
   </div>
 
-  <div class="plan">
-    <h3>🔥 无限套餐 - ¥40</h3>
-    <p>流量：无限</p>
-    <p>速度：1000Mbps 动态</p>
+  <!-- 尊享套餐 -->
+  <div class="card">
+    <h3>🌟 尊享套餐 – ¥30</h3>
+    <p>流量：500 G / 月</p>
+    <p>设备：最多 5 台</p>
+    <button class="btn" onclick="showQR('premium')">点击付款</button>
+
+    <div id="qr-premium" class="qr-block">
+      <p>扫码付款：</p>
+      <img src="premium.png" alt="尊享付款码">
+      <button class="btn paid-btn" onclick="showTip()">我已付款</button>
+    </div>
+  </div>
+
+  <!-- 无限套餐 -->
+  <div class="card">
+    <h3>🚀 无限套餐 – ¥40</h3>
+    <p>流量：不限</p>
     <p>设备：最多 10 台</p>
+    <button class="btn" onclick="showQR('unlimited')">点击付款</button>
+
+    <div id="qr-unlimited" class="qr-block">
+      <p>扫码付款：</p>
+      <img src="unlimited.png" alt="无限付款码">
+      <button class="btn paid-btn" onclick="showTip()">我已付款</button>
+    </div>
   </div>
 
-  <div class="plan">
-    <h3>🌟 尊享套餐 - ¥30</h3>
-    <p>流量：500G/月</p>
-    <p>速度：1000Mbps 动态</p>
-    <p>设备：最多 5 台</p>
-  </div>
-
-  <button class="pay-btn" onclick="showTip()">✅ 我已付款，领取订阅</button>
-
-  <div id="tip" class="tip-box">
-    请将付款截图发送给客服微信：<span class="highlight">Lonelier_zi</span><br />
-    📩 客服会尽快为你发放订阅链接~
+  <!-- 客服提示框 -->
+  <div id="tipBox">
+    ✅ 请将付款截图发送给客服微信：<span class="highlight">Lonelier_zi</span><br>
+    📨 客服会尽快发放订阅链接~
   </div>
 
   <script>
-    function showTip() {
-      document.getElementById("tip").style.display = "block";
-      document.getElementById("tip").scrollIntoView({ behavior: "smooth" });
+    // 显示对应套餐二维码
+    function showQR(type){
+      document.querySelectorAll('.qr-block').forEach(q=>q.style.display='none');
+      document.getElementById('qr-'+type).style.display='block';
+      // 滚到二维码处
+      document.getElementById('qr-'+type).scrollIntoView({behavior:'smooth'});
+    }
+    // 显示客服提示
+    function showTip(){
+      document.getElementById('tipBox').style.display='block';
+      document.getElementById('tipBox').scrollIntoView({behavior:'smooth'});
     }
   </script>
 
