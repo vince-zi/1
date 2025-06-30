@@ -1,105 +1,113 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>订阅套餐付款页</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>订阅选择页面</title>
   <style>
     body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background: #f9f9f9;
-      text-align: center;
-      padding: 30px;
-      color: #333;
-    }
-    h1 {
-      color: #4CAF50;
-    }
-    .plan {
-      background: white;
-      border-radius: 8px;
-      margin: 20px auto;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f8f8;
       padding: 20px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
     }
-    .plan h2 {
-      margin-bottom: 10px;
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
     }
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
+
+    .plan {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin: 15px auto;
+      padding: 20px;
+      max-width: 500px;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .plan h3 {
+      margin: 0;
+      color: #3CB371;
+    }
+
+    .plan p {
+      margin: 6px 0;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .pay-btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #3CB371;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
     }
-    .qr {
-      margin-top: 15px;
+
+    .tip-box {
       display: none;
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 90%;
+      background-color: #fff8dc;
+      border-left: 6px solid #f90;
+      border-radius: 8px;
+      color: #444;
+      font-size: 16px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
-    .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #666;
+
+    .highlight {
+      color: #d9534f;
+      font-weight: bold;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
 
-<h1>选择你的订阅套餐</h1>
+  <h2>选择你需要的订阅套餐</h2>
 
-<div class="plan">
-  <h2>📦 轻量套餐（13元/月）</h2>
-  <p>每月100G流量</p>
-  <button class="btn" onclick="showQR('light')">点击付款</button>
-  <div id="qr-light" class="qr">
-    <img src="收款码.png" width="220" alt="轻量付款码">
+  <div class="plan">
+    <h3>💡 轻量套餐 - ¥15</h3>
+    <p>流量：100G/月</p>
+    <p>速度：1000Mbps 动态</p>
+    <p>设备：最多 5 台</p>
   </div>
-</div>
 
-<div class="plan">
-  <h2>📦 轻量套餐（20元/月）</h2>
-  <p>每月500G流量</p>
-  <button class="btn" onclick="showQR('light')">点击付款</button>
-  <div id="qr-light" class="qr">
-    <img src="收款码.png" width="220" alt="轻量付款码">
+  <div class="plan">
+    <h3>🔥 无限套餐 - ¥40</h3>
+    <p>流量：无限</p>
+    <p>速度：1000Mbps 动态</p>
+    <p>设备：最多 10 台</p>
   </div>
-</div>
 
-<div class="plan">
-  <h2>👑 季付套餐（45元）</h2>
-  <p>每月500G流量</p>
-  <button class="btn" onclick="showQR('premium')">点击付款</button>
-  <div id="qr-premium" class="qr">
-    <img src="收款码.png" width="220" alt="尊享付款码">
+  <div class="plan">
+    <h3>🌟 尊享套餐 - ¥30</h3>
+    <p>流量：500G/月</p>
+    <p>速度：1000Mbps 动态</p>
+    <p>设备：最多 5 台</p>
   </div>
-</div>
 
-<div class="plan">
-  <h2>🚀 年付套餐（130元）</h2>
-  <p>每月500G</p>
-  <button class="btn" onclick="showQR('unlimited')">点击付款</button>
-  <div id="qr-unlimited" class="qr">
-    <img src="收款码.png" width="220" alt="无限付款码">
+  <button class="pay-btn" onclick="showTip()">✅ 我已付款，领取订阅</button>
+
+  <div id="tip" class="tip-box">
+    请将付款截图发送给客服微信：<span class="highlight">Lonelier_zi</span><br />
+    📩 客服会尽快为你发放订阅链接~
   </div>
-</div>
 
-<div class="footer">
-  <p>付款完成后，请添加客服微信 <strong>Lonelier_zi</strong> 发送付款截图获取订阅。</p>
-  <p>如页面在微信中无法打开，请复制链接到浏览器中访问。</p>
-</div>
-
-<script>
-  function showQR(type) {
-    document.querySelectorAll('.qr').forEach(qr => qr.style.display = 'none');
-    document.getElementById(`qr-${type}`).style.display = 'block';
-  }
-</script>
+  <script>
+    function showTip() {
+      document.getElementById("tip").style.display = "block";
+      document.getElementById("tip").scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
 
 </body>
 </html>
