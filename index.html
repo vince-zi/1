@@ -29,11 +29,12 @@
 
     <div class="text-center mb-12">
       <h1 class="text-4xl sm:text-5xl font-bold text-gray-900">选择适合您的套餐</h1>
-      <p class="mt-4 text-lg text-gray-600">已有60+客户愉悦购买（85%用户是女士）。</p>
+      <p class="mt-4 text-lg text-gray-600">已有60+的用户愉悦购买（85%的用户为女士）</p>
     </div>
 
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+      <!-- 套餐 1 -->
       <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col text-center border border-gray-200" data-plan="monthly">
         <h2 class="text-xl font-semibold">月度套餐</h2>
         <p class="text-gray-500 mt-1 mb-4 text-sm">每月100G流量</p>
@@ -45,10 +46,11 @@
                 <button class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600" onclick="showPaymentQR('monthly', 'alipay')">支付宝</button>
             </div>
         </div>
-        <div class="qr-code" id="qr-wechat-monthly"><img src="wechat.png" width="220" alt="微信收款码" class="mx-auto rounded-lg"></div>
-        <div class="qr-code" id="qr-alipay-monthly"><img src="alipay.png" width="220" alt="支付宝收款码" class="mx-auto rounded-lg"></div>
+        <div class="qr-code" id="qr-wechat-monthly"><img src="https://raw.githubusercontent.com/vince-zi/1/main/wechat.png" width="220" alt="微信收款码" class="mx-auto rounded-lg"></div>
+        <div class="qr-code" id="qr-alipay-monthly"><img src="https://raw.githubusercontent.com/vince-zi/1/main/alipay.png" width="220" alt="支付宝收款码" class="mx-auto rounded-lg"></div>
       </div>
 
+      <!-- 套餐 2 (推荐) -->
       <div class="relative bg-white rounded-xl shadow-2xl p-6 flex flex-col text-center border-2 border-indigo-600" data-plan="plus">
         <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2"><span class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">最佳性价比</span></div>
         <h2 class="text-xl font-semibold">升级月度</h2>
@@ -61,10 +63,11 @@
                 <button class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600" onclick="showPaymentQR('plus', 'alipay')">支付宝</button>
             </div>
         </div>
-        <div class="qr-code" id="qr-wechat-plus"><img src="wechat.png" width="220" alt="微信收款码" class="mx-auto rounded-lg"></div>
-        <div class="qr-code" id="qr-alipay-plus"><img src="alipay.png" width="220" alt="支付宝收款码" class="mx-auto rounded-lg"></div>
+        <div class="qr-code" id="qr-wechat-plus"><img src="https://raw.githubusercontent.com/vince-zi/1/main/wechat.png" width="220" alt="微信收款码" class="mx-auto rounded-lg"></div>
+        <div class="qr-code" id="qr-alipay-plus"><img src="https://raw.githubusercontent.com/vince-zi/1/main/alipay.png" width="220" alt="支付宝收款码" class="mx-auto rounded-lg"></div>
       </div>
 
+      <!-- 套餐 3 -->
       <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col text-center border border-gray-200" data-plan="quarterly">
         <h2 class="text-xl font-semibold">季度套餐</h2>
         <p class="text-gray-500 mt-1 mb-4 text-sm">每月500G流量</p>
@@ -76,10 +79,11 @@
                 <button class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600" onclick="showPaymentQR('quarterly', 'alipay')">支付宝</button>
             </div>
         </div>
-        <div class="qr-code" id="qr-wechat-quarterly"><img src="wechat.png" width="220" alt="微信收款码" class="mx-auto rounded-lg"></div>
-        <div class="qr-code" id="qr-alipay-quarterly"><img src="alipay.png" width="220" alt="支付宝收款码" class="mx-auto rounded-lg"></div>
+        <div class="qr-code" id="qr-wechat-quarterly"><img src="https://raw.githubusercontent.com/vince-zi/1/main/wechat.png" width="220" alt="微信收款码" class="mx-auto rounded-lg"></div>
+        <div class="qr-code" id="qr-alipay-quarterly"><img src="https://raw.githubusercontent.com/vince-zi/1/main/alipay.png" width="220" alt="支付宝收款码" class="mx-auto rounded-lg"></div>
       </div>
       
+      <!-- 套餐 4 -->
       <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col text-center border border-gray-200" data-plan="annual">
         <h2 class="text-xl font-semibold">年度套餐</h2>
         <p class="text-gray-500 mt-1 mb-4 text-sm">每月500G流量</p>
@@ -91,10 +95,11 @@
                 <button class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600" onclick="showPaymentQR('annual', 'alipay')">支付宝</button>
             </div>
         </div>
-        <div class="qr-code" id="qr-wechat-annual"><img src="wechat.png" width="220" alt="微信收款码" class="mx-auto rounded-lg"></div>
-        <div class="qr-code" id="qr-alipay-annual"><img src="alipay.png" width="220" alt="支付宝收款码" class="mx-auto rounded-lg"></div>
+        <div class="qr-code" id="qr-wechat-annual"><img src="https://raw.githubusercontent.com/vince-zi/1/main/wechat.png" width="220" alt="微信收款码" class="mx-auto rounded-lg"></div>
+        <div class="qr-code" id="qr-alipay-annual"><img src="https://raw.githubusercontent.com/vince-zi/1/main/alipay.png" width="220" alt="支付宝收款码" class="mx-auto rounded-lg"></div>
       </div>
     </div>
+
 
     <div class="footer text-center mt-16">
       <p class="text-gray-600">付款完成后，请添加微信 <strong class="font-semibold text-gray-800">Lonelier_zi</strong> 发送付款截图获取订阅。</p>
@@ -106,18 +111,12 @@
   <script>
     let currentlyOpenPlan = null;
 
-    // 第一步：选择套餐，展开支付方式选项
     function selectPlan(planType) {
-        // 先关闭所有已经打开的选项和二维码
         document.querySelectorAll('.payment-options, .qr-code').forEach(el => el.classList.remove('show'));
-
-        // 如果点击的是已经展开的套餐，则关闭它
         if (currentlyOpenPlan === planType) {
             currentlyOpenPlan = null;
             return;
         }
-
-        // 展开当前点击套餐的支付选项
         const targetOptions = document.getElementById(`payment-options-${planType}`);
         if (targetOptions) {
             targetOptions.classList.add('show');
@@ -125,12 +124,8 @@
         }
     }
 
-    // 第二步：选择支付方式，展示对应的二维码
     function showPaymentQR(planType, paymentMethod) {
-        // 关闭当前套餐内可能已打开的二维码
         document.querySelectorAll(`[data-plan='${planType}'] .qr-code`).forEach(el => el.classList.remove('show'));
-        
-        // 打开目标二维码
         const targetQR = document.getElementById(`qr-${paymentMethod}-${planType}`);
         if (targetQR) {
             targetQR.classList.add('show');
