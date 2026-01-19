@@ -13,15 +13,16 @@
         :root { --primary: #4f46e5; --accent: #f43f5e; --bg: #f8fafc; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: #1e293b; min-height: 100vh; }
         .aurora-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); }
-        .blob { position: absolute; width: 500px; height: 500px; border-radius: 50%; filter: blur(80px); opacity: 0.4; z-index: -1; animation: float 20s infinite alternate; }
+        .blob { position: absolute; width: 500px; height: 500px; border-radius: 50%; filter: blur(80px); opacity: 0.3; z-index: -1; animation: float 20s infinite alternate; }
         @keyframes float { from { transform: translate(0, 0) scale(1); } to { transform: translate(10%, 10%) scale(1.1); } }
-        .modern-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05); transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
-        .modern-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1); }
+        .modern-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05); transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+        .modern-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08); }
         .pulse-badge { background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%); animation: pulse-animation 2s infinite; }
         @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(244, 63, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); } }
         .step-num { background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%); }
         .payment-options, .qr-code-wrapper { max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; }
-        .payment-options.show, .qr-code-wrapper.show { max-height: 450px; opacity: 1; margin-top: 1.5rem; }
+        .payment-options.show, .qr-code-wrapper.show { max-height: 500px; opacity: 1; margin-top: 1.5rem; }
+        .dl-link { @apply flex items-center justify-between w-full p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-indigo-300 transition-all group; }
     </style>
 </head>
 <body class="antialiased">
@@ -33,90 +34,110 @@
 
     <div class="container mx-auto px-4 py-12 relative z-10 max-w-6xl">
 
-        <div class="text-center mb-16">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">全平台稳定订阅</h1>
-            <p class="mt-4 text-slate-500 font-bold">1. 先下载工具 <i data-lucide="arrow-right" class="inline w-4 h-4 mx-1"></i> 2. 再选购套餐激活</p>
+        <div class="text-center mb-12">
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">全平台高速订阅</h1>
+            <div class="mt-4 flex items-center justify-center gap-2 text-slate-500 font-bold text-sm">
+                <span class="bg-slate-900 text-white px-2 py-0.5 rounded">1</span> 下载工具
+                <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300"></i>
+                <span class="bg-indigo-600 text-white px-2 py-0.5 rounded">2</span> 订购激活
+            </div>
         </div>
 
         <!-- STEP 1: DOWNLOAD -->
-        <section class="mb-20">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="step-num w-10 h-10 rounded-full flex items-center justify-center text-white font-black shadow-lg">1</div>
-                <h2 class="text-2xl font-bold text-slate-800">下载对应平台的软件</h2>
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="step-num w-8 h-8 rounded-full flex items-center justify-center text-white font-black">1</div>
+                <h2 class="text-xl font-bold text-slate-800">获取对应平台软件</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Windows -->
                 <div class="modern-card rounded-[2rem] p-6">
-                    <div class="flex items-center gap-3 mb-6 text-blue-600">
-                        <i data-lucide="monitor" class="w-6 h-6"></i>
-                        <h3 class="font-bold text-slate-800">Windows</h3>
+                    <div class="flex items-center gap-2 mb-6 text-blue-600 font-bold italic">
+                        <i data-lucide="monitor" class="w-5 h-5"></i> Windows 电脑
                     </div>
                     <div class="space-y-3">
-                        <button onclick="downloadApp('v2rayn_win10.zip')" class="w-full py-4 px-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-300 text-sm font-bold text-slate-700 flex justify-between items-center group">
-                            V2rayN (Win10/11)
-                            <i data-lucide="download" class="w-4 h-4 text-blue-500"></i>
-                        </button>
-                        <button onclick="downloadApp('v2rayn_win7.zip')" class="w-full py-4 px-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-300 text-sm font-bold text-slate-700 flex justify-between items-center group">
-                            V2rayN (Win7)
-                            <i data-lucide="download" class="w-4 h-4 text-blue-500"></i>
-                        </button>
+                        <div class="relative group">
+                            <a href="http://119.91.239.207/app/v2rayn_win10.zip" target="_blank" onclick="handleDl(event)" class="dl-link">
+                                <span class="text-sm font-bold text-slate-700">V2rayN (Win10/11)</span>
+                                <i data-lucide="download" class="w-4 h-4 text-blue-500"></i>
+                            </a>
+                            <button onclick="copyUrl('http://119.91.239.207/app/v2rayn_win10.zip')" class="absolute right-12 top-1/2 -translate-y-1/2 p-2 text-slate-300 hover:text-indigo-500 transition-colors" title="复制链接"><i data-lucide="copy" class="w-3.5 h-3.5"></i></button>
+                        </div>
+                        <div class="relative group">
+                            <a href="http://119.91.239.207/app/v2rayn_win7.zip" target="_blank" onclick="handleDl(event)" class="dl-link">
+                                <span class="text-sm font-bold text-slate-700">V2rayN (Win7)</span>
+                                <i data-lucide="download" class="w-4 h-4 text-blue-500"></i>
+                            </a>
+                            <button onclick="copyUrl('http://119.91.239.207/app/v2rayn_win7.zip')" class="absolute right-12 top-1/2 -translate-y-1/2 p-2 text-slate-300 hover:text-indigo-500 transition-colors"><i data-lucide="copy" class="w-3.5 h-3.5"></i></button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Android -->
                 <div class="modern-card rounded-[2rem] p-6 border-2 border-indigo-100 relative">
-                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] px-3 py-1 font-bold rounded-bl-xl">移动端推荐</div>
-                    <div class="flex items-center gap-3 mb-6 text-green-600">
-                        <i data-lucide="smartphone" class="w-6 h-6"></i>
-                        <h3 class="font-bold text-slate-800">Android 安卓</h3>
+                    <div class="absolute -top-3 right-6 bg-indigo-600 text-white text-[10px] px-3 py-1 font-black rounded-full shadow-lg shadow-indigo-200">强烈推荐</div>
+                    <div class="flex items-center gap-2 mb-6 text-green-600 font-bold italic">
+                        <i data-lucide="smartphone" class="w-5 h-5"></i> Android 安卓
                     </div>
                     <div class="space-y-3">
-                        <button onclick="downloadApp('v2rayng.apk')" class="w-full py-4 px-4 rounded-xl bg-indigo-600 text-white shadow-lg shadow-indigo-100 text-sm font-bold flex justify-between items-center">
-                            下载 v2rayNG (推荐)
-                            <i data-lucide="star" class="w-4 h-4 fill-white"></i>
-                        </button>
-                        <button onclick="downloadApp('clash_meta.apk')" class="w-full py-4 px-4 rounded-xl bg-slate-50 border border-slate-100 text-sm font-bold text-slate-700 flex justify-between items-center">
-                            Clash Meta
-                            <i data-lucide="download" class="w-4 h-4"></i>
-                        </button>
+                        <div class="relative group">
+                            <a href="http://119.91.239.207/app/v2rayng.apk" target="_blank" onclick="handleDl(event)" class="flex items-center justify-between w-full p-4 rounded-xl bg-indigo-600 text-white font-bold shadow-lg shadow-indigo-100 transition-all hover:bg-indigo-700">
+                                <span>下载 v2rayNG</span>
+                                <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+                            </a>
+                            <button onclick="copyUrl('http://119.91.239.207/app/v2rayng.apk')" class="absolute right-12 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white transition-colors"><i data-lucide="copy" class="w-3.5 h-3.5"></i></button>
+                        </div>
+                        <div class="relative group">
+                            <a href="http://119.91.239.207/app/clash_meta.apk" target="_blank" onclick="handleDl(event)" class="dl-link">
+                                <span class="text-sm font-bold text-slate-700">Clash Meta</span>
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                            </a>
+                            <button onclick="copyUrl('http://119.91.239.207/app/clash_meta.apk')" class="absolute right-12 top-1/2 -translate-y-1/2 p-2 text-slate-300 hover:text-indigo-500 transition-colors"><i data-lucide="copy" class="w-3.5 h-3.5"></i></button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Apple -->
                 <div class="modern-card rounded-[2rem] p-6">
-                    <div class="flex items-center gap-3 mb-6 text-slate-900">
-                        <i data-lucide="apple" class="w-6 h-6"></i>
-                        <h3 class="font-bold text-slate-800">Apple 苹果</h3>
+                    <div class="flex items-center gap-2 mb-6 text-slate-900 font-bold italic">
+                        <i data-lucide="apple" class="w-5 h-5"></i> macOS / iOS
                     </div>
                     <div class="space-y-4">
                         <div class="grid grid-cols-2 gap-2">
-                            <button onclick="downloadApp('clash_verge_m.dmg')" class="py-2 px-2 rounded-xl bg-slate-50 border border-slate-100 text-[10px] font-bold text-slate-700">macOS (M1/2/3)</button>
-                            <button onclick="downloadApp('clash_verge_i.dmg')" class="py-2 px-2 rounded-xl bg-slate-50 border border-slate-100 text-[10px] font-bold text-slate-700">macOS (Intel)</button>
+                            <a href="http://119.91.239.207/app/clash_verge_m.dmg" target="_blank" onclick="handleDl(event)" class="py-2.5 px-2 rounded-xl bg-slate-50 border border-slate-100 text-[10px] font-bold text-slate-700 text-center">macOS (M1/2/3)</a>
+                            <a href="http://119.91.239.207/app/clash_verge_i.dmg" target="_blank" onclick="handleDl(event)" class="py-2.5 px-2 rounded-xl bg-slate-50 border border-slate-100 text-[10px] font-bold text-slate-700 text-center">macOS (Intel)</a>
                         </div>
-                        <div class="p-3 rounded-xl bg-indigo-50/50 border border-dashed border-indigo-200">
+                        <div class="p-4 rounded-xl bg-indigo-50 border border-dashed border-indigo-200">
                             <p class="text-[10px] text-indigo-600 font-bold mb-1 uppercase tracking-widest">iPhone / iPad</p>
-                            <p class="text-[11px] text-slate-600">商店搜索 <span class="font-bold">Shadowrocket</span></p>
+                            <p class="text-[11px] text-slate-600 leading-relaxed">请在 App Store 搜索 <span class="text-indigo-600 font-bold">Shadowrocket</span> (小火箭) 使用。</p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Alert for mobile -->
+            <div class="mt-6 p-4 rounded-2xl bg-amber-50 border border-amber-100 flex items-start gap-3">
+                <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 shrink-0"></i>
+                <p class="text-[11px] text-amber-700 font-medium leading-relaxed">
+                    <span class="font-bold">注意：</span>如果点击下载无反应，请点击右上角选择 <span class="underline">“在浏览器打开”</span>。如果浏览器提示“不安全下载”，请选择 <span class="underline">“保留”</span> 或 <span class="underline">“仍然下载”</span>。
+                </p>
             </div>
         </section>
 
         <!-- STEP 2: PLANS -->
         <section>
-            <div class="flex items-center gap-4 mb-8">
-                <div class="step-num w-10 h-10 rounded-full flex items-center justify-center text-white font-black shadow-lg">2</div>
-                <h2 class="text-2xl font-bold text-slate-800">选购订阅套餐</h2>
+            <div class="flex items-center gap-3 mb-8">
+                <div class="step-num w-8 h-8 rounded-full flex items-center justify-center text-white font-black">2</div>
+                <h2 class="text-xl font-bold text-slate-800">选购订阅套餐</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Monthly -->
                 <div class="modern-card rounded-[2.5rem] p-8 flex flex-col text-center" data-plan="monthly">
-                    <h3 class="text-xl font-bold text-slate-800">月度套餐</h3>
-                    <p class="text-slate-400 mt-1 mb-6 text-sm">每月 100G 流量</p>
-                    <div class="mb-8"><span class="text-5xl font-extrabold text-slate-900">¥15</span><span class="text-slate-400">/月</span></div>
-                    <button onclick="selectPlan('monthly')" class="w-full py-4 px-6 bg-slate-900 text-white font-bold rounded-2xl">选择套餐</button>
+                    <h3 class="font-bold text-slate-800">月度套餐</h3>
+                    <p class="text-slate-400 mt-1 mb-6 text-[11px]">每月 100G 流量</p>
+                    <div class="mb-8 font-extrabold text-slate-900"><span class="text-4xl">¥15</span><span class="text-sm text-slate-400">/月</span></div>
+                    <button onclick="selectPlan('monthly')" class="w-full py-3.5 bg-slate-900 text-white font-bold rounded-2xl text-sm">选择套餐</button>
                     <div class="payment-options" id="payment-options-monthly">
                         <div class="flex gap-2">
                             <button onclick="showPaymentQR('monthly', 'wechat')" class="flex-1 bg-emerald-50 text-emerald-600 py-3 rounded-xl font-bold text-xs">微信</button>
@@ -124,19 +145,19 @@
                         </div>
                     </div>
                     <div class="qr-code-wrapper" id="qr-wrapper-monthly">
-                        <div class="p-4 bg-white border rounded-2xl inline-block shadow-xl">
-                            <img src="wechat.png" id="qr-img-monthly" width="180" class="rounded-lg mx-auto">
+                        <div class="p-3 bg-white border rounded-2xl inline-block shadow-lg">
+                            <img src="wechat.png" id="qr-img-monthly" width="160" class="rounded-lg mx-auto">
                         </div>
                     </div>
                 </div>
 
                 <!-- Plus -->
                 <div class="modern-card rounded-[2.5rem] p-8 flex flex-col text-center border-2 border-indigo-500 relative">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2"><span class="bg-indigo-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase">最佳性价比</span></div>
-                    <h3 class="text-xl font-bold text-slate-800">升级月度</h3>
-                    <p class="text-slate-400 mt-1 mb-6 text-sm">每月 500G 流量</p>
-                    <div class="mb-8"><span class="text-5xl font-extrabold text-slate-900">¥30</span><span class="text-slate-400">/月</span></div>
-                    <button onclick="selectPlan('plus')" class="w-full py-4 px-6 bg-indigo-600 text-white font-bold rounded-2xl">立即订阅</button>
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 font-black text-[9px] bg-indigo-600 text-white px-3 py-1 rounded-full">最佳性价比</div>
+                    <h3 class="font-bold text-slate-800">升级月度</h3>
+                    <p class="text-slate-400 mt-1 mb-6 text-[11px]">每月 500G 流量</p>
+                    <div class="mb-8 font-extrabold text-slate-900"><span class="text-4xl">¥30</span><span class="text-sm text-slate-400">/月</span></div>
+                    <button onclick="selectPlan('plus')" class="w-full py-3.5 bg-indigo-600 text-white font-bold rounded-2xl text-sm shadow-xl shadow-indigo-100">立即订阅</button>
                     <div class="payment-options" id="payment-options-plus">
                         <div class="flex gap-2">
                             <button onclick="showPaymentQR('plus', 'wechat')" class="flex-1 bg-emerald-50 text-emerald-600 py-3 rounded-xl font-bold text-xs">微信</button>
@@ -144,21 +165,19 @@
                         </div>
                     </div>
                     <div class="qr-code-wrapper" id="qr-wrapper-plus">
-                        <div class="p-4 bg-white border rounded-2xl inline-block shadow-xl">
-                            <img src="wechat.png" id="qr-img-plus" width="180" class="rounded-lg mx-auto">
+                        <div class="p-3 bg-white border rounded-2xl inline-block shadow-lg">
+                            <img src="wechat.png" id="qr-img-plus" width="160" class="rounded-lg mx-auto">
                         </div>
                     </div>
                 </div>
 
                 <!-- Quarterly -->
                 <div class="modern-card rounded-[2.5rem] p-8 flex flex-col text-center" data-plan="quarterly">
-                    <h3 class="text-xl font-bold text-slate-800">季度套餐</h3>
-                    <p class="text-slate-400 mt-1 mb-4 text-sm">每月 500G 流量</p>
-                    <div class="mb-4 flex flex-wrap justify-center gap-1">
-                        <span class="text-[9px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold uppercase">支持安卓/苹果/电脑</span>
-                    </div>
-                    <div class="mb-8"><span class="text-5xl font-extrabold text-slate-900">¥80</span><span class="text-slate-400">/季</span></div>
-                    <button onclick="selectPlan('quarterly')" class="w-full py-4 px-6 bg-slate-900 text-white font-bold rounded-2xl">选择套餐</button>
+                    <h3 class="font-bold text-slate-800">季度套餐</h3>
+                    <p class="text-slate-400 mt-1 mb-4 text-[11px]">每月 500G 流量</p>
+                    <div class="mb-4"><span class="text-[9px] bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded font-bold">支持多端同步共用</span></div>
+                    <div class="mb-8 font-extrabold text-slate-900"><span class="text-4xl">¥80</span><span class="text-sm text-slate-400">/季</span></div>
+                    <button onclick="selectPlan('quarterly')" class="w-full py-3.5 bg-slate-900 text-white font-bold rounded-2xl text-sm">选择套餐</button>
                     <div class="payment-options" id="payment-options-quarterly">
                         <div class="flex gap-2">
                             <button onclick="showPaymentQR('quarterly', 'wechat')" class="flex-1 bg-emerald-50 text-emerald-600 py-3 rounded-xl font-bold text-xs">微信</button>
@@ -166,22 +185,20 @@
                         </div>
                     </div>
                     <div class="qr-code-wrapper" id="qr-wrapper-quarterly">
-                        <div class="p-4 bg-white border rounded-2xl inline-block shadow-xl">
-                            <img src="wechat.png" id="qr-img-quarterly" width="180" class="rounded-lg mx-auto">
+                        <div class="p-3 bg-white border rounded-2xl inline-block shadow-lg">
+                            <img src="wechat.png" id="qr-img-quarterly" width="160" class="rounded-lg mx-auto">
                         </div>
                     </div>
                 </div>
 
                 <!-- Annual -->
                 <div class="modern-card rounded-[2.5rem] p-8 flex flex-col text-center relative border-2 border-rose-100">
-                    <div class="absolute -top-5 left-1/2 -translate-x-1/2"><span class="pulse-badge text-white text-[11px] font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-xl">🔥 限时买一送一</span></div>
-                    <h3 class="text-xl font-bold text-slate-800">年度套餐</h3>
-                    <p class="text-rose-500 mt-1 mb-4 text-sm font-black italic">买一年 · 送一年</p>
-                    <div class="mb-4 flex flex-wrap justify-center gap-1">
-                        <span class="text-[9px] bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded font-bold uppercase">电脑/手机全平台共用</span>
-                    </div>
-                    <div class="mb-8"><span class="text-5xl font-extrabold text-slate-900">¥200</span><span class="text-slate-400">/年</span></div>
-                    <button onclick="selectPlan('annual')" class="w-full py-4 px-6 bg-slate-900 text-white font-bold rounded-2xl">立即参与</button>
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2"><span class="pulse-badge text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-xl">🔥 限时买一送一</span></div>
+                    <h3 class="font-bold text-slate-800">年度套餐</h3>
+                    <p class="text-rose-500 mt-1 mb-4 text-[11px] font-black italic">买一年 · 送一年</p>
+                    <div class="mb-4"><span class="text-[9px] bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded font-bold uppercase">全平台不限设备</span></div>
+                    <div class="mb-8 font-extrabold text-slate-900"><span class="text-4xl">¥200</span><span class="text-sm text-slate-400">/年</span></div>
+                    <button onclick="selectPlan('annual')" class="w-full py-3.5 bg-slate-900 text-white font-bold rounded-2xl text-sm">立即抢购</button>
                     <div class="payment-options" id="payment-options-annual">
                         <div class="flex gap-2">
                             <button onclick="showPaymentQR('annual', 'wechat')" class="flex-1 bg-emerald-50 text-emerald-600 py-3 rounded-xl font-bold text-xs">微信</button>
@@ -189,8 +206,8 @@
                         </div>
                     </div>
                     <div class="qr-code-wrapper" id="qr-wrapper-annual">
-                        <div class="p-4 bg-white border rounded-2xl inline-block shadow-xl">
-                            <img src="wechat.png" id="qr-img-annual" width="180" class="rounded-lg mx-auto">
+                        <div class="p-3 bg-white border rounded-2xl inline-block shadow-lg">
+                            <img src="wechat.png" id="qr-img-annual" width="160" class="rounded-lg mx-auto">
                         </div>
                     </div>
                 </div>
@@ -200,12 +217,11 @@
         <!-- Footer -->
         <div class="mt-20 text-center">
             <div class="inline-block bg-white p-6 rounded-[2.5rem] border shadow-sm max-w-lg">
-                <p class="text-slate-600 text-sm mb-4">付款后添加微信发截图获取订阅：</p>
-                <div class="inline-flex items-center gap-3 bg-slate-50 px-6 py-3 rounded-2xl border cursor-pointer hover:bg-indigo-50 transition-all" onclick="copyWeChat()">
+                <p class="text-slate-500 text-xs mb-4 font-medium">付款后添加微信获取订阅链接：</p>
+                <div class="inline-flex items-center gap-3 bg-slate-50 px-6 py-3 rounded-2xl border cursor-pointer hover:bg-indigo-50 transition-all" onclick="copyUrl('Lonelier_zi', '微信 ID')">
                     <span class="text-indigo-600 font-black text-xl">Lonelier_zi</span>
                     <i data-lucide="copy" class="w-4 h-4 text-indigo-300"></i>
                 </div>
-                <p class="mt-6 text-[10px] text-slate-400 font-bold uppercase tracking-tighter">如微信内点击下载无反应，请选择右上角“在浏览器打开”</p>
             </div>
         </div>
     </div>
@@ -214,7 +230,7 @@
     <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] translate-y-20 opacity-0 transition-all duration-400">
         <div class="bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/10">
             <i data-lucide="bell" class="w-5 h-5 text-indigo-400"></i>
-            <span id="toastMsg" class="font-bold text-sm"></span>
+            <span id="toastMsg" class="font-bold text-xs"></span>
         </div>
     </div>
 
@@ -222,21 +238,12 @@
         lucide.createIcons();
         let currentlyOpenPlan = null;
 
-        function downloadApp(fileName) {
-            // 使用 HTTP 尝试，避免某些服务器 HTTPS 403 问题
-            const httpUrl = `http://119.91.239.207/app/${fileName}`;
-            const httpsUrl = `https://119.91.239.207/app/${fileName}`;
-            
-            showToast('正在尝试启动下载...');
-            
-            // 尝试在 HTTPS 下使用 HTTPS，如果失败（或用户处于 HTTPS 环境下需要点击允许），则提供 HTTP 备选
-            const link = document.createElement('a');
-            link.href = httpUrl; // 先尝试 HTTP
-            link.target = "_blank";
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+        function handleDl(e) {
+            showToast('正在调起下载，请留意浏览器顶部提示');
+        }
+
+        function copyUrl(text, type = '链接') {
+            navigator.clipboard.writeText(text).then(() => { showToast(type + ' 已成功复制'); });
         }
 
         function selectPlan(planType) {
@@ -261,11 +268,7 @@
             img.src = paymentMethod === 'wechat' ? 'wechat.png' : 'alipay.png';
             wrapper.classList.remove('show');
             setTimeout(() => { wrapper.classList.add('show'); }, 10);
-            showToast(`已为您显示${paymentMethod === 'wechat' ? '微信' : '支付宝'}收款码`);
-        }
-
-        function copyWeChat() {
-            navigator.clipboard.writeText('Lonelier_zi').then(() => { showToast('微信 ID 已复制'); });
+            showToast(`已显示${paymentMethod === 'wechat' ? '微信' : '支付宝'}收款码`);
         }
 
         function showToast(msg) {
